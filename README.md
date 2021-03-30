@@ -1,11 +1,29 @@
-# e-commerce
-amazon-like e-commerce website's backend only: used Insomnia Core for POST/DELETE/PUT routes. 
-![ecomm](https://raw.githubusercontent.com/attila5287/e-commerce/main/Assets/ecommerce.png  "ecomm")| `ORMsQL`
+# ![ecomm](https://raw.githubusercontent.com/attila5287/e-commerce/main/Assets/ecommerce.png  "ecomm") E-Commerce Back End 
+```
+> amazon-like e-commerce website's backend only 
+> RESTful CRUD: Perform create, read, update, and delete operations
+```
+
+![4] | `eCommSQL`|
 |---|---|
  ![h](https://raw.githubusercontent.com/attila5287/img_readme/main/all/h.png  "ecomm") | [ecommsql.herokuapp.com](http://ecommsql.herokuapp.com/)
 
-Routes
-======
+
+|![3]|Task|Description
+|---|---|---
+![1]| `Product` |belongs to `Category`, and `Category` has many `Product` | models, as a category can have multiple products but a product can only belong to one category.
+![1]|`Product` |Belongs to many `Tag` models, |
+![1]|`Tag` | belongs to many `Product` models. 
+![1]|`ProductTag` |products have multiple tags and tags have many products |
+![1]|Config DB| Local: `MySQL Workbench`, Deployment: `Jaws DB`
+![1]|Seed the DB | run `npm run seed` to seed data to your database so that you can test your routes.
+![1]|Sync on Start | `server.js` to sync the Sequelize models to the MySQL database on 
+
+
+[0]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/checkbox0.png
+[1]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/checkbox1.png
+[3]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/dbsm.png
+[4]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/js.png
 
 | Method | URL | Description | Image |
 | --- | --- | --- | --- |
@@ -35,7 +53,3 @@ Routes
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
-
-
-[0]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/checkbox0.png
-[1]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/checkbox1.png
