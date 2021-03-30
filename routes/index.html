@@ -23,7 +23,10 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link text-light" href="ecommsql.herokuapp.com">
-          <h4 class="text-primary">E-Commerce with SQL</h4>
+          <h3 class="text-primary">
+            <i class="fab fa-amazon text-dark mr-2"></i>
+            E-Commerce with SQL
+          </h3>
           <span class="sr-only">(current)</span></a>
       </li>
     </ul>
@@ -31,10 +34,10 @@
 </nav>
 <hr class="mt-5">
 <h1 class="mt-4 text center">Products</h1>
-<div class="card-deck h-100" id="products">
+<hr class="border-light mt-0 mb-2">
+<div class="card-deck" id="products">
 </div>
 
-<hr class="border-light mt-0 mb-2">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
@@ -42,6 +45,10 @@
 <style>
   .card-img-top {
     max-height: 12rem;
+  }
+
+  .rounded-xl {
+    border-radius: 1rem;
   }
 </style>
 <script>
@@ -55,14 +62,17 @@
         col.attr('class', 'col-sm-4');
           
         const card = $('<div>');
-        card.attr('class', 'card rounded-lg h-100');
+        card.attr('class', 'card mx-2');
 
         const header = $('<h4>');
-        header.attr('class', 'card-header text-center');
+        header.attr('class', 'card-header text-center  h-100');
         header.text(p.product_name);  
 
+        const a_icon =  $('<h4>').attr('class', 'fab fa-amazon bg-warning rounded-xl mr-2 p-1 ml-2')  
+        header.append(a_icon);    
+
         const img = $('<img>');
-        img.attr('class', 'card-img-top pro-img');
+        img.attr('class', 'card-img-top bg-transparent');
         img.attr('src', p.img_url);
         img.text(p.product_name);  
 
@@ -70,11 +80,14 @@
         body.attr('class', 'card-footer');
         
         const title = $('<h3>');
-        title.attr('class', 'card-title');
+        title.attr('class', 'card-title text-center text-dark bg-warning rounded-xl');
         title.text('$ '+p.price+ '.00');  
 
+        const shop_icon =  $('<i>').attr('class', 'fas fa-shopping-cart ml-2')  
+        title.append(shop_icon);    
+        
         const text = $('<p>');
-        text.attr('class', 'card-text text-muted font-italic');
+        text.attr('class', 'card-text text-muted font-italic text-right');
         text.text(p.tags.map(d=>d.tag_name.toUpperCase()).join(', '));  
         
         const tag_icon =  $('<h4>').attr('class', 'fas fa-tag ml-2')  
@@ -84,9 +97,12 @@
         body.append(text);
 
         const footer = $('<div>');
-        footer.attr('class', 'card-footer');
+        footer.attr('class', 'card-footer text-center text-warning');
         footer.text(p.category.category_name);  
 
+        const cat_icon =  $('<h4>').attr('class', 'far fa-object-ungroup ml-2')  
+        footer.append(cat_icon);    
+        
         card.append(header);  
         card.append(img);  
         card.append(body);  
