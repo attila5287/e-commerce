@@ -1,6 +1,6 @@
 # e-commerce
 amazon-like e-commerce website's backend only: used Insomnia Core for POST/DELETE/PUT routes. 
-![globe](https://raw.githubusercontent.com/attila5287/img_readme/main/all/globe_bw.png  "globe")| `ORMsQL`
+![globe](https://raw.githubusercontent.com/attila5287/e-commerce/main/Assets/e-commerce.png  "ecomm")| `ORMsQL`
 |---|---|
  ![h](https://raw.githubusercontent.com/attila5287/img_readme/main/all/h.png  "globe") | [tripmysql.herokuapp.com](http://ormsql.herokuapp.com/)
 
