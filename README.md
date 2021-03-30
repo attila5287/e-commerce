@@ -3,6 +3,17 @@
 
  ![h](https://raw.githubusercontent.com/attila5287/img_readme/main/all/h.png  "ecomm")  [ecommsql.herokuapp.com](http://ecommsql.herokuapp.com/)
 ===
+
+Bonus: Front End
+---
+- [ ] - add image urls for products
+- [ ] - HTML landing page
+- [ ] - Create product with form elements 
+- [ ] - Read with dynamic select menu
+- [ ] - Update selected product 
+- [ ] - Delete with button
+
+
 ![4] | `eCommSQL`|
 |---|---|
 |express|web/api framework|
