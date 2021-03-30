@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="simple HTML page for back-end-only eCommSQL"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.6.0/darkly/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<title>e-Comm SQL</title>
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-light bg-primary text-light fixed-top">
+  <a class="navbar-brand" href="https://github.com/attila5287/e-commerce"> 
+    <img alt="@attila5287" src="https://avatars1.githubusercontent.com/u/42498753?s=60&amp;u=739973fd70454aa533c67bccf17b6aeddcc6361f&amp;v=4" class="rounded my-0 py-0" 
+    width= "36" 
+    height="36"
+    >
+     </a>
+  <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div id="my-nav" class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-light" href="ecommsql.herokuapp.com">
+          <h3>E-Commerce with SQL</h3>
+          <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<hr class="mt-5">
+<div class="row mt-5">
+<div class="col-4">
+  <form class="form-group bg-transparent m-3" method="POST" action="/api/locations">
+    <input class="form-control" type="text" id="location_name" name="location_name" placeholder="Location">
+    <input type="submit" value="Add Location" class="btn btn-primary btn-lg btn-block">
+  </form>
+</div>  
+<div class="col-4">
+  <form class="form-group bg-transparent m-3" method="POST" action="/api/travellers">
+    <input class="form-control" type="text" id="name" name="name" placeholder="Traveller Name">
+    <input class="form-control" type="text" id="email" name="email" placeholder="Traveller Email">
+    <input type="submit" value="Add Traveller" class="btn btn-primary btn-lg btn-block">
+  </form>
+  </div>  
+<div class="col-4">
+  <form class="form-group bg-transparent m-3" method="POST" action="/api/trips">
+      <select id="location_id" name="location_id" class="form-control">
+      </select>
+      <select id="traveller_id" name="traveller_id" class="form-control">
+      </select>
+    <input class="form-control" type="text" id="trip_budget" name="trip_budget" placeholder="Trip Budget">
+    <input class="form-control" type="text" id="traveller_amount" name="traveller_amount" placeholder="Traveller Amount">
+    <input type="submit" value="Add Trip" class="btn btn-primary btn-lg btn-block">
+  </form>
+  </div>  
+</div>
+<div class="row">
+  <div class="col-4">
+    <ul id="locations" class="list-group list-group-flush">
+      <li class="list-group-item bg-primary">Locations</li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <ul id="travellers" class="list-group list-group-flush">
+      <li class="list-group-item bg-primary">Travellers</li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <ul id="trips" class="list-group list-group-flush">
+      <li class="list-group-item bg-primary">Trips</li>
+    </ul>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
