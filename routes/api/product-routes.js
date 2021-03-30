@@ -3,12 +3,17 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
-// get all products
+// Store the bookData in a variable once the promise is resolved. 09 async/await
 router.get('/', async (req, res) => {
+  try {
   const all = await Product.findAll({ include: { all: true } });
+  // Return the bookData promise inside of the JSON response
   return res.json(all)
-  // find all products
-  // be sure to include its associated Category and Tag data
+    
+  } catch (error) {
+    
+  return res.status(400).json(error)
+  }
 });
 
 // get one product
