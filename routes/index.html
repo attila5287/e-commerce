@@ -32,25 +32,118 @@
     </ul>
   </div>
 </nav>
+
 <hr class="mt-5">
-<h1 class="mt-4 text center">Products</h1>
-<div class="card-deck" id="products">
+<h1 class="mt-5 text center">Add Category</h1>
+<hr class="border-light mt-0 mb-4">
+<div class="row">
+  <div class="col-4 offset-2">
+      <form method="POST" action="/api/categories">
+        <label for="select_cat">
+          <h3 class="fas fa-database mr-2"></h3>
+          Type a name for the new category
+        </label>      
+        <input class="form-control form-control-lg" type="text" name="category_name" value="New Category">
+        
+        <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert category to database">
+      </form>
+    </div>
+
+    <div class="col-4">
+      <form method="POST" action="/api/tags">
+        <label for="select_cat">
+          <h3 class="fas fa-tag mr-2"></h3>
+          Type a name for the new tag
+        </label>      
+        <input class="form-control form-control-lg" type="text" name="tag_name" value="New Tag">
+        
+        <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert tag to database">
+      </form>
+      <blockquote class="blockquote">
+        <p class="mb-0" id="available_tags">Text</p>
+      </blockquote>
+     </div>
+  </div>
+
+
+<h1 class="mt-5 text center">Add Product</h1>
+<hr class="border-light mt-0 mb-4">
+<form method="POST" action="/api/products">
+  <div class="row">
+    <div class="col-4 offset-2">
+      
+      <div class="form-group">
+        <label for="select_cat">
+          <h3 class="fas fa-database mr-2"></h3>
+          (Required) Select Category</label>
+        <select id="select_cat" class="custom-select" name="category_id">
+          <option hidden>Please choose a category</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="select_tag">
+          <h3 class="fas fa-tag mr-2"></h3>
+          (Optional) Select Tag(s)</label>
+        <select id="select_tag" class="custom-select" name="tagIds" multiple>
+          <option value="0" disabled>Multiple selection available</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-4">
+      
+      <div class="form-group">
+        <label for="product_name">
+          <h3 class="fas fa-barcode mr-2"></h3>
+          (Required) Type Product Name</label>
+        <input id= "product_name" class="form-control" type="text" name="product_name">
+      </div>
+      <div class="form-group">
+        <label for="price">
+          <h3 class="fas fa-hand-holding-usd mr-2"></h3>
+          (Required) Type Product Price ($/ea.)
+        </label>
+        <input id= "price" class="form-control" type="text" name="price">
+      </div>
+      <div class="form-group">
+        <label for="stock">
+          <h3 class="fas fa-boxes mr-2"></h3>
+          (Required) Type In-Stock Quantity (count)
+        </label>
+        <input id= "stock" class="form-control" type="text" name="stock">
+      </div>
+    </div>
+
+    <input id="submit" class="btn btn-outline-warning btn-block btn-lg col-8 offset-2" type="submit" name="submit" value="insert product to database">
+  </div>
+</form>
+
+<h1 class="mt-5 text center">View Products</h1>
+<hr class="border-light mt-0 mb-4">
+<div class="row">
+  <div class="col-8 offset-2"> 
+    <div class="card-deck" id="products"></div>
+  </div>
 </div>
-<hr class="border-light mt-0 mb-2">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
 
 <style>
+  label {
+    font-size: 1.25rem;
+    font-style: italic;
+  }
   .card-img-top {
     max-height: 12rem;
   }
 
   .rounded-xl {
-    border-radius: 1rem;
+    border-radius: 0.75rem;
   }
 </style>
+
+card
 <script>
   $.ajax( {
     type: "GET",
@@ -62,10 +155,10 @@
         col.attr('class', 'col-sm-4');
           
         const card = $('<div>');
-        card.attr('class', 'card mx-2');
+        card.attr('class', 'card bg-transparent mx-2');
 
         const header = $('<h4>');
-        header.attr('class', 'card-header text-center  h-100');
+        header.attr('class', 'card-header text-center bg-transparent h-100');
         header.text(p.product_name);  
 
         const a_icon =  $('<h4>').attr('class', 'fab fa-amazon bg-warning rounded-xl mr-2 p-1 ml-2')  
@@ -77,7 +170,7 @@
         img.text(p.product_name);  
 
         const body = $('<div>');
-        body.attr('class', 'card-footer');
+        body.attr('class', 'card-body bg-transparent');
         
         const title = $('<h3>');
         title.attr('class', 'card-title text-center text-dark bg-warning rounded-xl');
@@ -87,8 +180,8 @@
         title.append(shop_icon);    
         
         const text = $('<p>');
-        text.attr('class', 'card-text text-muted font-italic text-right');
-        text.text('tags');  
+        text.attr('class', 'card-text font-italic text-right mb-5');
+        text.text('no tags recorded');  
         if (p.tags) {
         text.text(p.tags.map(d=>d.tag_name.toUpperCase()).join(', '));  
         }
@@ -100,10 +193,10 @@
         body.append(text);
 
         const footer = $('<div>');
-        footer.attr('class', 'card-footer text-center text-warning');
+        footer.attr('class', 'card-footer bg-transparent border-top text-center text-warning rounded-lg mt-5');
         footer.text(p.category.category_name);  
 
-        const cat_icon =  $('<h4>').attr('class', 'far fa-object-ungroup ml-2')  
+        const cat_icon =  $('<h4>').attr('class', 'fas fa-database ml-2')  
         footer.append(cat_icon);    
         
         card.append(header);  
