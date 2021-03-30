@@ -47,8 +47,12 @@
         
         <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert category to database">
       </form>
+      <blockquote mt-2 class="blockquote mt-2">
+        <i class="far fa-save fa-pull-left mr-3"></i>
+        <p class="mb-0 text-muted font-italic" id="tags_saved">fetching records...</p>
+      </blockquote mt-2>
     </div>
-
+    
     <div class="col-4">
       <form method="POST" action="/api/tags">
         <label for="select_cat">
@@ -59,10 +63,11 @@
         
         <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert tag to database">
       </form>
-      <blockquote class="blockquote">
-        <p class="mb-0" id="available_tags">Text</p>
-      </blockquote>
-     </div>
+      <blockquote mt-2 class="blockquote mt-2">
+        <i class="far fa-save fa-pull-left mr-3"></i>
+        <p class="mb-0 text-muted font-italic" id="tags_saved">fetching records...</p>
+      </blockquote mt-2>
+    </div>
   </div>
 
 
@@ -89,6 +94,7 @@
         </select>
       </div>
     </div>
+
     <div class="col-4">
       
       <div class="form-group">
@@ -143,7 +149,6 @@
   }
 </style>
 
-card
 <script>
   $.ajax( {
     type: "GET",
@@ -214,6 +219,9 @@ card
     console.log('err :>> ', err);
   });
 </script>
+
+<script></script>
+
 
 </body>
 </html>
