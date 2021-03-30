@@ -55,10 +55,10 @@
         col.attr('class', 'col-sm-4');
           
         const card = $('<div>');
-        card.attr('class', 'card h-100');
+        card.attr('class', 'card rounded-lg h-100');
 
-        const header = $('<div>');
-        header.attr('class', 'card-header');
+        const header = $('<h4>');
+        header.attr('class', 'card-header text-center');
         header.text(p.product_name);  
 
         const img = $('<img>');
@@ -69,11 +69,19 @@
         const body = $('<div>');
         body.attr('class', 'card-footer');
         
-        const title = $('<h5>');
+        const title = $('<h3>');
         title.attr('class', 'card-title');
-        title.text(p.price);  
+        title.text('$ '+p.price+ '.00');  
 
-        body.append(title)    
+        const text = $('<p>');
+        text.attr('class', 'card-text text-muted font-italic');
+        text.text(p.tags.map(d=>d.tag_name.toUpperCase()).join(', '));  
+        
+        const tag_icon =  $('<h4>').attr('class', 'fas fa-tag ml-2')  
+        text.append(tag_icon);    
+        
+        body.append(title);    
+        body.append(text);
 
         const footer = $('<div>');
         footer.attr('class', 'card-footer');
