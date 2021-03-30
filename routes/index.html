@@ -49,7 +49,7 @@
     <div class="col-6">
         <form method="POST" action="/api/categories">
           <label for="category_name">
-            <h3 class="fas fa-sitemap mr-2"></h3>
+            <h3 class="fas fa-th-large mr-2"></h3>
             Type a name for the new category
           </label>      
           <input class="form-control form-control-lg" type="text" name="category_name"  id="category_name" value="New Category">
@@ -98,7 +98,7 @@
         
         <div class="form-group">
           <label for="select_cat">
-            <h3 class="fas fa-sitemap mr-2"></h3>
+            <h3 class="fas fa-th-large mr-2"></h3>
             (Required) Select Category</label>
           <select id="select_cat" class="custom-select" name="category_id">
             <option hidden>Please choose a category</option>
@@ -153,7 +153,11 @@
   <hr class="border-light mt-0 mb-4">
   <div class="row">
     <div class="col-12"> 
-      <div class="card-deck" id="products"></div>
+      <div class="card bg-transparent">
+        <div class="card-body bg-transparent">
+          <div class="card-columns" id="products"></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -164,6 +168,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
 
 <style>
+  
+  .card-columns {
+    column-count: 4;
+  };
   .fas {
     color: orange;
   }
@@ -173,16 +181,20 @@
   max-width: 736px;
   padding: 4px;
 } 
-  label {
-    font-size: 1.25rem;
-    font-style: italic;
-  }
   .card-img-top {
     max-height: 12rem;
   }
 
   .rounded-xl {
     border-radius: 0.75rem;
+  }
+  .text-sm{
+    font-size: 0.85rem;
+
+  }
+  label {
+    font-size: 1.25rem;
+    font-style: italic;
   }
 </style>
 
@@ -193,14 +205,12 @@
   } ).then((products) => {
     console.log('products :>> ', products);
       products.forEach(p => {
-        const col = $('<div>');
-        col.attr('class', 'col-sm-4');
           
         const card = $('<div>');
-        card.attr('class', 'card bg-transparent');
+        card.attr('class', 'card bg-transparent border-warning rounded-xl mx-0 px-0');
 
         const header = $('<h4>');
-        header.attr('class', 'card-header text-center bg-transparent h-50');
+        header.attr('class', 'card-header text-center bg-transparent border-bottom border-warning');
         header.text(p.product_name);  
 
         const img = $('<img>');
@@ -219,23 +229,23 @@
         title.append(shop_icon);    
         
         const text = $('<p>');
-        text.attr('class', 'card-text font-italic text-right mb-5');
+        text.attr('class', 'card-text font-italic text-right text-sm');
         text.text('no tags recorded');  
         if (p.tags) {
-        text.text(p.tags.map(d=>d.tag_name.toUpperCase()).join(', '));  
+        text.text(p.tags.map(d=>d.tag_name.toLowerCase()).join(', '));  
         }
         
-        const tag_icon =  $('<h4>').attr('class', 'fas fa-tag ml-2')  
+        const tag_icon =  $('<i>').attr('class', 'fas fa-tag ml-2')  
         text.append(tag_icon);    
         
         body.append(title);    
         body.append(text);
 
         const footer = $('<div>');
-        footer.attr('class', 'card-footer bg-transparent border-top text-center text-warning rounded-lg mt-5');
+        footer.attr('class', 'card-footer bg-transparent border-warning border-top text-center text-warning py-0 mt-0');
         footer.text(p.category.category_name);  
 
-        const cat_icon =  $('<h4>').attr('class', 'fas fa-sitemap ml-2')  
+        const cat_icon =  $('<i>').attr('class', 'fas fa-th-large ml-2')  
         footer.append(cat_icon);    
         
         card.append(header);  
@@ -243,7 +253,6 @@
         card.append(body);  
         card.append(footer);  
 
-        // col.append(card);  
         $('#products').append(card);
         
       });
