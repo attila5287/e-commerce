@@ -34,9 +34,9 @@
 </nav>
 <hr class="mt-5">
 <h1 class="mt-4 text center">Products</h1>
-<hr class="border-light mt-0 mb-2">
 <div class="card-deck" id="products">
 </div>
+<hr class="border-light mt-0 mb-2">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
@@ -88,7 +88,10 @@
         
         const text = $('<p>');
         text.attr('class', 'card-text text-muted font-italic text-right');
+        text.text('tags');  
+        if (p.tags) {
         text.text(p.tags.map(d=>d.tag_name.toUpperCase()).join(', '));  
+        }
         
         const tag_icon =  $('<h4>').attr('class', 'fas fa-tag ml-2')  
         text.append(tag_icon);    
