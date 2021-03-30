@@ -1,20 +1,27 @@
 # ![ecomm](https://raw.githubusercontent.com/attila5287/e-commerce/main/Assets/ecommerce.png  "ecomm") E-Commerce Back End 
-``` 
-developed backend for amazon-like e-commerce app that allows RESTful CRUD: create, read, update, and delete operations via API routes
-```
+> Developed backend for amazon-like e-commerce app that allows RESTful CRUD: create, read, update, and delete operations via API routes
 
-![4] | eCommSQL|
+ ![h](https://raw.githubusercontent.com/attila5287/img_readme/main/all/h.png  "ecomm")  [ecommsql.herokuapp.com](http://ecommsql.herokuapp.com/)
+===
+![4] | `eCommSQL`|
 |---|---|
- ![h](https://raw.githubusercontent.com/attila5287/img_readme/main/all/h.png  "ecomm") | [ecommsql.herokuapp.com](http://ecommsql.herokuapp.com/)
+|express|web/api framework|
+|dotenv|db authentication|
+|sequelize|Object Related Modeling|
+|mysql|database local|
+|jaws DB|db on deployment|
 
 
-|![3]|DB |TODO
+|![3]|DB Model|Association
 |---|---|---
 ![1]| `Product` |belongs to `Category`, and `Category` has many `Product` | models, as a category can have multiple products but a product can only belong to one category.
 ![1]|`Product` |Belongs to many `Tag` models, |
 ![1]|`Tag` | belongs to many `Product` models. 
 ![1]|`ProductTag` |products have multiple tags and tags have many products |
-![1]|Config DB| Local: `MySQL Workbench`, Deployment: `Jaws DB`
+
+|![3]|TODO |Description
+|---|---|---
+![1]|Config DB| Compatible both: Local `MySQL Workbench`, Deployed `Jaws DB`
 ![1]|Seed the DB | run `npm run seed` to seed data to your database so that you can test your routes.
 ![1]|Sync on Start | `server.js` to sync the Sequelize models to the MySQL database on 
 
