@@ -19,7 +19,7 @@
 ![1]|`Tag` | belongs to many `Product` models. 
 ![1]|`ProductTag` |products have multiple tags and tags have many products |
 
-|![3]|TODO |Description
+|![5]|TODO |Description
 |---|---|---
 ![1]|Config DB| Compatible both: Local `MySQL Workbench`, Deployed `Jaws DB`
 ![1]|Seed the DB | run `npm run seed` to seed data to your database so that you can test your routes.
@@ -30,6 +30,7 @@
 [1]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/checkbox1.png
 [3]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/dbsm.png
 [4]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/js.png
+[5]: https://raw.githubusercontent.com/attila5287/img_readme/main/all/sql-icon.png
 
 | Method | URL | Description | Image |
 | --- | --- | --- | --- |
