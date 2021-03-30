@@ -99,7 +99,8 @@
         <div class="form-group">
           <label for="select_cat">
             <h3 class="fas fa-th-large mr-2"></h3>
-            (Required) Select Category</label>
+            <span class="text-warning"> (Required) </span>
+             Select Category</label>
           <select id="select_cat" class="custom-select" name="category_id">
             <option hidden>Please choose a category</option>
           </select>
@@ -119,20 +120,20 @@
         <div class="form-group">
           <label for="product_name">
             <h3 class="fas fa-barcode mr-2"></h3>
-            (Required) Type Product Name</label>
+            <span class="text-warning"> (Required) </span> Type Product Name</label>
           <input id= "product_name" class="form-control" type="text" name="product_name" value="New Product Name">
         </div>
         <div class="form-group">
           <label for="price">
             <h3 class="fas fa-hand-holding-usd mr-2"></h3>
-            (Required) Type Product Price ($/ea.)
+            <span class="text-warning"> (Required) </span> Type Product Price ($/ea.)
           </label>
           <input id= "price" class="form-control" type="text" name="price" value="0">
         </div>
         <div class="form-group">
           <label for="stock">
             <h3 class="fas fa-boxes mr-2"></h3>
-            (Required) Type In-Stock Quantity (count)
+            <span class="text-warning"> (Required) </span> Type In-Stock Quantity (count)
           </label>
           <input id= "stock" class="form-control" type="text" name="stock" value="1">
         </div>
@@ -208,10 +209,16 @@
           
         const card = $('<div>');
         card.attr('class', 'card bg-transparent border-warning rounded-xl mx-0 px-0');
-
         const header = $('<h4>');
+        header.attr('data-toggle', "tooltip");
+        header.attr('title', p.product_name);
         header.attr('class', 'card-header text-center bg-transparent border-bottom border-warning');
+
         header.text(p.product_name);  
+        if (p.product_name.length > 25) {
+        header.text(p.product_name.slice(0,25) + "...");  
+          
+        }
 
         const img = $('<img>');
         img.attr('class', 'card-img-top bg-transparent');
