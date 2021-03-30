@@ -1,5 +1,7 @@
 # ![ecomm](https://raw.githubusercontent.com/attila5287/e-commerce/main/Assets/ecommerce.png  "ecomm") E-Commerce Back End 
-` developed backend for amazon-like e-commerce app that allows RESTful CRUD: create, read, update, and delete operations via API routes`
+``` 
+developed backend for amazon-like e-commerce app that allows RESTful CRUD: create, read, update, and delete operations via API routes
+```
 
 ![4] | eCommSQL|
 |---|---|
