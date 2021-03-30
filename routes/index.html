@@ -10,12 +10,11 @@
 <title>e-Comm SQL</title>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-light bg-primary text-light fixed-top">
+<nav class="navbar navbar-expand navbar-light bg-warning text-light fixed-top py-0">
   <a class="navbar-brand" href="https://github.com/attila5287/e-commerce"> 
     <img alt="@attila5287" src="https://avatars1.githubusercontent.com/u/42498753?s=60&amp;u=739973fd70454aa533c67bccf17b6aeddcc6361f&amp;v=4" class="rounded my-0 py-0" 
     width= "36" 
     height="36"
-    >
      </a>
   <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,59 +23,84 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link text-light" href="ecommsql.herokuapp.com">
-          <h3>E-Commerce with SQL</h3>
+          <h4 class="text-primary">E-Commerce with SQL</h4>
           <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>
 </nav>
 <hr class="mt-5">
-<div class="row mt-5">
-<div class="col-4">
-  <form class="form-group bg-transparent m-3" method="POST" action="/api/locations">
-    <input class="form-control" type="text" id="location_name" name="location_name" placeholder="Location">
-    <input type="submit" value="Add Location" class="btn btn-primary btn-lg btn-block">
-  </form>
-</div>  
-<div class="col-4">
-  <form class="form-group bg-transparent m-3" method="POST" action="/api/travellers">
-    <input class="form-control" type="text" id="name" name="name" placeholder="Traveller Name">
-    <input class="form-control" type="text" id="email" name="email" placeholder="Traveller Email">
-    <input type="submit" value="Add Traveller" class="btn btn-primary btn-lg btn-block">
-  </form>
-  </div>  
-<div class="col-4">
-  <form class="form-group bg-transparent m-3" method="POST" action="/api/trips">
-      <select id="location_id" name="location_id" class="form-control">
-      </select>
-      <select id="traveller_id" name="traveller_id" class="form-control">
-      </select>
-    <input class="form-control" type="text" id="trip_budget" name="trip_budget" placeholder="Trip Budget">
-    <input class="form-control" type="text" id="traveller_amount" name="traveller_amount" placeholder="Traveller Amount">
-    <input type="submit" value="Add Trip" class="btn btn-primary btn-lg btn-block">
-  </form>
-  </div>  
+<h1 class="mt-4 text center">Products</h1>
+<div class="row" id="products">
+  
 </div>
-<div class="row">
-  <div class="col-4">
-    <ul id="locations" class="list-group list-group-flush">
-      <li class="list-group-item bg-primary">Locations</li>
-    </ul>
+
+<div class="card">
+  <img class="card-img-top" src="" alt="">
+  <div class="card-body">
+    <h5 class="card-title">Title</h5>
+    <p class="card-text">Content</p>
   </div>
-  <div class="col-4">
-    <ul id="travellers" class="list-group list-group-flush">
-      <li class="list-group-item bg-primary">Travellers</li>
-    </ul>
-  </div>
-  <div class="col-4">
-    <ul id="trips" class="list-group list-group-flush">
-      <li class="list-group-item bg-primary">Trips</li>
-    </ul>
-  </div>
+  <img class="card-img-bottom" src="" alt="">
 </div>
+
+
+
+<hr class="border-light mt-0 mb-2">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+<script>
+  $.ajax( {
+    type: "GET",
+    url: '/api/products',
+  } ).then((products) => {
+    console.log('products :>> ', products);
+      products.forEach(p => {
+        const col = $('<div>');
+        col.attr('class', 'col-sm-4');
+          
+        const card = $('<div>');
+        card.attr('class', 'card');
+
+        const header = $('<div>');
+        header.attr('class', 'card-header');
+        header.text(p.product_name);  
+
+        const img = $('<img>');
+        img.attr('class', 'card-img-top pro-img');
+        img.attr('src', p.img_url);
+        img.text(p.product_name);  
+
+        const body = $('<div>');
+        body.attr('class', 'card-footer');
+        
+        const title = $('<h5>');
+        title.attr('class', 'card-title');
+        title.text(p.price);  
+
+        body.append(title)    
+
+        const footer = $('<div>');
+        footer.attr('class', 'card-footer');
+        footer.text(p.category.category_name);  
+
+        card.append(header);  
+        card.append(img);  
+        card.append(body);  
+        card.append(footer);  
+
+        col.append(card);  
+        $('#products').append(col);
+        
+      });
+
     
+  }).catch((err) => {
+    console.log('err :>> ', err);
+  });
+</script>
+
 </body>
 </html>

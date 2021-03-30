@@ -6,8 +6,9 @@
 
 Bonus: Front End
 ---
-- [ ] - add image urls for products
-- [ ] - HTML landing page
+- [x] - add image urls for products
+- [x] - HTML landing page
+- [ ] - AJAX api/products -> jQuery append
 - [ ] - Create product with form elements 
 - [ ] - Read with dynamic select menu
 - [ ] - Update selected product 
