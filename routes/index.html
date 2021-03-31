@@ -205,28 +205,34 @@
       products.forEach(p => {
           
         const card = $('<div>');
-        card.attr('class', 'card bg-primary border-warning rounded-xl m-2');
+        card.attr('class', 'card bg-transparent border-warning rounded-xl m-2');
         const header = $('<h6>');
         header.attr('data-toggle', "tooltip");
         header.attr('title', p.product_name);
         header.attr('class', 'card-header text-center bg-transparent border-bottom border-warning');
 
-        header.text(p.product_name);  
+        const pro_name = $('<b>');
+        pro_name.text(p.product_name); 
+        
+        const barcode = $('<i>');
+          barcode.attr('class','fas fa-barcode mr-1');
+        header.append(barcode);  
+        header.append(pro_name);  
         if (p.product_name.length > 25) {
         header.text(p.product_name.slice(0,25) + "...");  
           
         }
 
         const img = $('<img>');
-        img.attr('class', 'card-img-top bg-dark');
+        img.attr('class', 'card-img-top bg-transparent');
         img.attr('src', p.img_url);
         img.text(p.product_name);  
 
         const body = $('<div>');
-        body.attr('class', 'card-body bg-dark');
+        body.attr('class', 'card-body bg-transparent');
         
         const title = $('<h4>');
-        title.attr('class', 'card-title text-center text-dark bg-warning rounded-lg');
+        title.attr('class', 'card-title text-center text-dark bg-light rounded-lg font-weight-bold');
         title.text('$ '+p.price+ '.00');  
 
         
