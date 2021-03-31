@@ -22,12 +22,16 @@
   <div id="my-nav" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto my-0 py-0">
       <li class="nav-item active">
-        <a class="nav-link text-light" href="http://ecommsql.herokuapp.com">
+        <a class="nav-link text-dark" href="http://ecommsql.herokuapp.com">
           <h4 class="text-primary">
             <u>
               <b class="font-italic text-dark">e-Commerce</b>
             </u>  
-            <small class="font-italic ml-5">node.js app with Sequelize ORM and MySQL dialect serving routes with express.js</small>
+            <small class="font-italic ml-5">
+              <b>
+                node.js app with Sequelize ORM and MySQL dialect serving routes with express.js
+              </b>
+            </small>
           </h4>
           <span class="sr-only">(current)</span></a>
       </li>
@@ -36,15 +40,20 @@
 </nav>
 <div class="mini">
   <hr class="mt-5">
-  <h1 class="mt-5 text center">
-    <i class="fab fa-amazon">
+  
+  <h1 class="mt-5 text center">View Products</h1>
+  <hr class="border-warning mt-0 mb-4">
+          <div class="card-columns" id="products"></div>
+
+  <h1 class="text center">
+    <i class="fab fa-amazon fa-flip-horizontal text-warning">
     </i>
     <i>
       dd 
       Category
     </i>
   </h1>
-  <hr class="border-light mt-0 mb-4">
+  <hr class="border-warning mt-0 mb-4">
   <div class="row">
     <div class="col-6">
         <form method="POST" action="/api/categories">
@@ -54,7 +63,7 @@
           </label>      
           <input class="form-control form-control-lg" type="text" name="category_name"  id="category_name" value="New Category">
           
-          <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert category to database">
+          <input id="submit" class="btn btn-primary btn-block btn-lg mt-2" type="submit" name="submit" value="insert category to database">
         </form>
         <blockquote  class="blockquote mt-4">
           <i class="fas fa-database fa-pull-left mr-3"></i>
@@ -72,7 +81,7 @@
           </label>      
           <input class="form-control form-control-lg" type="text" name="tag_name" value="New Tag">
           
-          <input id="submit" class="btn btn-outline-warning btn-block btn-lg mt-2" type="submit" name="submit" value="insert tag to database">
+          <input id="submit" class="btn btn-primary btn-block btn-lg mt-2" type="submit" name="submit" value="insert tag to database">
         </form>
         <blockquote  class="blockquote mt-4">
         
@@ -86,12 +95,12 @@
   </div>
   
   <h1 class="mt-5 text center">
-    <i class="fab fa-amazon"></i>
+    <i class="fab fa-amazon fa-flip-horizontal text-warning"></i>
     <i>
       dd Product
     </i>
   </h1>
-  <hr class="border-light mt-0 mb-4">
+  <hr class="border-warning mt-0 mb-4">
   <form method="POST" action="/api/products">
     <div class="row">
       <div class="col-6">
@@ -146,22 +155,10 @@
         </div>
       </div>
   
-      <input id="submit" class="btn btn-outline-warning btn-block btn-lg col-12" type="submit" name="submit" value="insert product to database">
+      <input id="submit" class="btn btn-primary btn-block btn-lg col-12" type="submit" name="submit" value="insert product to database">
     </div>
   </form>
   
-  <h1 class="mt-5 text center">View Products</h1>
-  <hr class="border-light mt-0 mb-4">
-  <div class="row">
-    <div class="col-12"> 
-      <div class="card bg-transparent">
-        <div class="card-body bg-transparent">
-          <div class="card-columns" id="products"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -208,8 +205,8 @@
       products.forEach(p => {
           
         const card = $('<div>');
-        card.attr('class', 'card bg-transparent border-warning rounded-xl mx-0 px-0');
-        const header = $('<h4>');
+        card.attr('class', 'card bg-primary border-warning rounded-xl m-2');
+        const header = $('<h6>');
         header.attr('data-toggle', "tooltip");
         header.attr('title', p.product_name);
         header.attr('class', 'card-header text-center bg-transparent border-bottom border-warning');
@@ -221,19 +218,17 @@
         }
 
         const img = $('<img>');
-        img.attr('class', 'card-img-top bg-transparent');
+        img.attr('class', 'card-img-top bg-dark');
         img.attr('src', p.img_url);
         img.text(p.product_name);  
 
         const body = $('<div>');
-        body.attr('class', 'card-body bg-transparent');
+        body.attr('class', 'card-body bg-dark');
         
         const title = $('<h4>');
         title.attr('class', 'card-title text-center text-dark bg-warning rounded-lg');
         title.text('$ '+p.price+ '.00');  
 
-        const shop_icon =  $('<i>').attr('class', 'fas fa-shopping-cart ml-2')  
-        title.append(shop_icon);    
         
         const text = $('<p>');
         text.attr('class', 'card-text font-italic text-right text-sm');
@@ -252,8 +247,12 @@
         footer.attr('class', 'card-footer bg-transparent border-warning border-top text-center text-warning py-0 mt-0');
         footer.text(p.category.category_name);  
 
-        const cat_icon =  $('<i>').attr('class', 'fas fa-th-large ml-2')  
+        const cat_icon =  $('<small>').attr('class', 'fas fa-th-large ml-2')  
         footer.append(cat_icon);    
+        
+        const stock_icon =  $('<small>').attr('class', 'fas fa-boxes text-light ml-5')  
+        stock_icon.text(p.stock);    
+        footer.append(stock_icon);    
         
         card.append(header);  
         card.append(img);  
