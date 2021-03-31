@@ -10,7 +10,7 @@
 <title>e-Comm SQL</title>
 </head>
 <body>
-<nav class="navbar navbar-expand navbar-light bg-warning text-light fixed-top py-0 my-0">
+<nav class="navbar navbar-expand navbar-light bg-primary text-light fixed-top py-0 my-0">
   <a class="navbar-brand" href="https://github.com/attila5287/e-commerce"> 
     <img alt="@attila5287" src="https://avatars1.githubusercontent.com/u/42498753?s=60&amp;u=739973fd70454aa533c67bccf17b6aeddcc6361f&amp;v=4" class="rounded-xl my-0 py-0" 
     width= "36" 
@@ -22,18 +22,13 @@
   <div id="my-nav" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto my-0 py-0">
       <li class="nav-item active">
-        <a class="nav-link text-dark" href="http://ecommsql.herokuapp.com">
-          <h4 class="text-primary">
-            <u>
-              <b class="font-italic text-dark">e-Commerce</b>
-            </u>  
-            <small class="font-italic ml-5">
+        <a class="nav-link text-warning" href="http://ecommsql.herokuapp.com">
+          <a class="nav-title font-italic text-warning">e-Commerce</a>
+          <span class="mr-auto">            <i class="font-italic text-light ml-1">
               <b>
                 node.js app with Sequelize ORM and MySQL dialect serving routes with express.js
               </b>
-            </small>
-          </h4>
-          <span class="sr-only">(current)</span></a>
+            </></span></a>
       </li>
     </ul>
   </div>
@@ -58,7 +53,7 @@
     <div class="col-6">
         <form method="POST" action="/api/categories">
           <label for="category_name">
-            <h3 class="fas fa-th-large mr-2"></h3>
+            <h4 class="fas fa-th-large mr-2"></h4>
             Type a name for the new category
           </label>      
           <input class="form-control form-control-lg" type="text" name="category_name"  id="category_name" value="New Category">
@@ -66,7 +61,10 @@
           <input id="submit" class="btn btn-primary btn-block btn-lg mt-2" type="submit" name="submit" value="insert category to database">
         </form>
         <blockquote  class="blockquote mt-4">
-          <i class="fas fa-database fa-pull-left mr-3"></i>
+          <span class="text-warning">
+            <i class="fas fa-database fa-pull-left mr-3"></i>
+
+          </span>
           fetching DB records...
           <small class="mb-0 text-muted font-italic" id="cats_saved">
           </small>
@@ -76,7 +74,7 @@
       <div class="col-6">
         <form method="POST" action="/api/tags">
           <label for="tag_name">
-            <h3 class="fas fa-tag mr-2"></h3>
+            <h4 class="fas fa-tag mr-2"></h4>
             Type a name for the new tag
           </label>      
           <input class="form-control form-control-lg" type="text" name="tag_name" value="New Tag">
@@ -84,9 +82,10 @@
           <input id="submit" class="btn btn-primary btn-block btn-lg mt-2" type="submit" name="submit" value="insert tag to database">
         </form>
         <blockquote  class="blockquote mt-4">
-        
+        <span class="text-warning">
           <i class="fas fa-database fa-pull-left mr-3"></i>
           fetching DB records...
+          </span>
           <small class="mb-0 text-muted font-italic" id="tags_saved">
           </small>
         
@@ -107,7 +106,7 @@
         
         <div class="form-group">
           <label for="select_cat">
-            <h3 class="fas fa-th-large mr-2"></h3>
+            <h4 class="fas fa-th-large mr-2"></h4>
             <span class="text-warning"> (Required) </span>
              Select Category</label>
           <select id="select_cat" class="custom-select" name="category_id">
@@ -116,7 +115,7 @@
         </div>
         <div class="form-group">
           <label for="select_tag">
-            <h3 class="fas fa-tag mr-2"></h3>
+            <h4 class="fas fa-tag mr-2"></h4>
             (Optional) Select Tag(s)</label>
           <select id="select_tag" class="custom-select custom-select-lg" name="tagIds" size="9" multiple>
             <option value="0" disabled>Multiple selection available</option>
@@ -128,27 +127,27 @@
         
         <div class="form-group">
           <label for="product_name">
-            <h3 class="fas fa-barcode mr-2"></h3>
+            <h4 class="fas fa-barcode mr-2"></h4>
             <span class="text-warning"> (Required) </span> Type Product Name</label>
           <input id= "product_name" class="form-control" type="text" name="product_name" value="New Product Name">
         </div>
         <div class="form-group">
           <label for="price">
-            <h3 class="fas fa-hand-holding-usd mr-2"></h3>
+            <h4 class="fas fa-hand-holding-usd mr-2"></h4>
             <span class="text-warning"> (Required) </span> Type Product Price ($/ea.)
           </label>
           <input id= "price" class="form-control" type="text" name="price" value="0">
         </div>
         <div class="form-group">
           <label for="stock">
-            <h3 class="fas fa-boxes mr-2"></h3>
+            <h4 class="fas fa-boxes mr-2"></h4>
             <span class="text-warning"> (Required) </span> Type In-Stock Quantity (count)
           </label>
           <input id= "stock" class="form-control" type="text" name="stock" value="1">
         </div>
         <div class="form-group">
           <label for="img_url">
-            <h3 class="fas fa-images mr-2"></h3>
+            <h4 class="fas fa-images mr-2"></h4>
             (Default/Set Later) Image URL
           </label>
           <input id= "img_url" class="form-control" type="text" name="img_url" value="https://raw.githubusercontent.com/attila5287/e-commerce/main/public/product_images/default.png">
@@ -190,6 +189,12 @@
     font-size: 0.85rem;
 
   }
+  .nav-title {
+    font-size: 2rem;
+  }
+  .barcode {
+    font-size: 1.25rem;
+  }
   label {
     font-size: 1.25rem;
     font-style: italic;
@@ -205,31 +210,30 @@
       products.forEach(p => {
           
         const card = $('<div>');
-        card.attr('class', 'card bg-transparent border-warning rounded-xl m-2');
+        card.attr('class', 'card bg-primary border-warning rounded-xl m-2');
         const header = $('<h6>');
         header.attr('data-toggle', "tooltip");
         header.attr('title', p.product_name);
         header.attr('class', 'card-header text-center bg-transparent border-bottom border-warning');
-
-        const pro_name = $('<b>');
+        const pro_name = $('<i>');
         pro_name.text(p.product_name); 
+
+        if (p.product_name.length > 25) {
+        pro_name.text(p.product_name.slice(0,20) + "...");  
+        }
         
         const barcode = $('<i>');
-          barcode.attr('class','fas fa-barcode mr-1');
+          barcode.attr('class','barcode fas fa-barcode bg-light text-dark rounded-lg px-1 py-0 mr-1');
         header.append(barcode);  
         header.append(pro_name);  
-        if (p.product_name.length > 25) {
-        header.text(p.product_name.slice(0,25) + "...");  
-          
-        }
 
         const img = $('<img>');
-        img.attr('class', 'card-img-top bg-transparent');
+        img.attr('class', 'card-img-top bg-dark');
         img.attr('src', p.img_url);
         img.text(p.product_name);  
 
         const body = $('<div>');
-        body.attr('class', 'card-body bg-transparent');
+        body.attr('class', 'card-body bg-dark');
         
         const title = $('<h4>');
         title.attr('class', 'card-title text-center text-dark bg-light rounded-lg font-weight-bold');
